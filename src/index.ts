@@ -6,7 +6,7 @@ function pickRandomWord(): WordList {
   return WordList[enumKey] as WordList;
 }
 
-type LetterScore = "P" | "M" | "H";
+export type LetterScore = "P" | "M" | "H";
 
-type GuessScore = readonly [LetterScore, LetterScore, LetterScore, LetterScore, LetterScore];
+export type WordScore = [LetterScore, LetterScore, LetterScore, LetterScore, LetterScore];
 
