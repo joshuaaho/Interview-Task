@@ -1,12 +1,33 @@
-import { WordList } from "./constants";
+import {  MAX_ATTEMPTS} from "./constants";
+import calculateWordScore from "./utils/calculateWordScore";
+import isCorrectGuess from "./utils/isCorrectGuess";
+import promptSync from "prompt-sync";
+import { pickRandomWord } from "./utils/pickRandomWord";
+import { formatScore } from "./utils/formatScore";
 
-function pickRandomWord(): WordList {
-  const values = Object.keys(WordList);
-  const enumKey = values[Math.floor(Math.random() * values.length)];
-  return WordList[enumKey] as WordList;
-}
+const prompt = promptSync();
+
 
 export type LetterScore = "P" | "M" | "H";
 
 export type WordScore = [LetterScore, LetterScore, LetterScore, LetterScore, LetterScore];
 
+
+const randomWord: any = pickRandomWord();
+
+
+for (let i = 0; i < MAX_ATTEMPTS; i++) {
+  const guess: any = prompt("Enter your guess: ");
+
+  const score = calculateWordScore(guess, randomWord);
+
+
+  console.log(formatScore(guess, score))
+  if (isCorrectGuess(score)) {
+    console.log("You win!");
+    break;
+  }
+
+}
+
+console.log("You lose! The word was ", randomWord)
