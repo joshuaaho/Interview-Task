@@ -1,3 +1,4 @@
+import { WordList } from "../constants";
 import { WordScore } from "../index";
 
 function calculateWordScore(guess: string, answer: string): WordScore {
