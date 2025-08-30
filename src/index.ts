@@ -28,6 +28,11 @@ for (let i = 0; i < MAX_ATTEMPTS; i++) {
     break;
   }
 
+  if (i === MAX_ATTEMPTS - 1) {
+    console.log("You lose!")
+    break;
+  }
+
 }
 
-console.log("You lose! The word was ", randomWord)
+console.log("The word was ", randomWord)
