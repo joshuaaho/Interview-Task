@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { pickRandomWord } from './pickRandomWord';
-import { WordList } from '../constants';
+import { WordList } from '../../constants';
 
 describe('pickRandomWord', () => {
   it('should return a 5 letter word', () => {

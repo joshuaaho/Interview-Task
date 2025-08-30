@@ -1,16 +1,13 @@
 import {  MAX_ATTEMPTS} from "./constants";
 import calculateWordScore from "./utils/calculateWordScore";
-import isCorrectGuess from "./utils/isCorrectGuess";
+import isCorrectGuess from "./server/utils/isCorrectGuess";
 import promptSync from "prompt-sync";
-import { pickRandomWord } from "./utils/pickRandomWord";
+import { pickRandomWord } from "./server/utils/pickRandomWord";
 import { formatScore } from "./utils/formatScore";
 
 const prompt = promptSync();
 
 
-export type LetterScore = "P" | "M" | "H";
-
-export type WordScore = [LetterScore, LetterScore, LetterScore, LetterScore, LetterScore];
 
 
 const randomWord: any = pickRandomWord();
