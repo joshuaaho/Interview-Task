@@ -26,4 +26,6 @@ export enum WordList {
   export enum ServerCommands {
     GAME_STARTED,
     GUESS_EVALUATED,
+    CLIENT_WON,
+    CLIENT_LOST,
   }
