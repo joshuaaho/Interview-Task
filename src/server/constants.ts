@@ -22,3 +22,8 @@ export enum WordList {
   }
   
   export const MAX_ATTEMPTS = 6;
+
+  export enum ServerCommands {
+    GAME_STARTED,
+    GUESS_EVALUATED,
+  }
