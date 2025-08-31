@@ -1,35 +1,36 @@
-import {  MAX_ATTEMPTS} from "./constants";
-import calculateWordScore from "./utils/calculateWordScore";
-import isCorrectGuess from "./server/utils/isCorrectGuess";
-import promptSync from "prompt-sync";
-import { pickRandomWord } from "./server/utils/pickRandomWord";
+import { io } from "socket.io-client";
+import { MAX_ATTEMPTS } from "../server/constants";
 import { formatScore } from "./utils/formatScore";
 
-const prompt = promptSync();
+console.log("Starting client...");
 
+let clientGuess: any = "";
 
+// Connect to the Socket.IO server
+const socket = io("http://localhost:3000");
 
+// Handle connection
+socket.on("connect", () => {
+  console.log("✅ Connected to the server");
+});
 
-const randomWord: any = pickRandomWord();
+// Handle responses from the server
+socket.on("GAME_STARTED", (msg) => {
+  clientGuess = prompt("Enter your guess: ");
+  socket.emit("GUESS_MADE", clientGuess);
+});
 
+socket.on("GUESS_EVALUATED", (msg) => {
+  console.log(formatScore(clientGuess, msg));
+});
+// Handle connection errors
+socket.on("connect_error", (error) => {
+  console.log("❌ Connection error:", error.message);
+});
 
-for (let i = 0; i < MAX_ATTEMPTS; i++) {
-  const guess: any = prompt("Enter your guess: ");
+// Handle disconnection
+socket.on("disconnect", () => {
+  console.log("❌ Disconnected from server");
+});
 
-  const score = calculateWordScore(guess, randomWord);
-
-
-  console.log(formatScore(guess, score))
-  if (isCorrectGuess(score)) {
-    console.log("You win!");
-    break;
-  }
-
-  if (i === MAX_ATTEMPTS - 1) {
-    console.log("You lose!")
-    break;
-  }
-
-}
-
-console.log("The word was ", randomWord)
+console.log("Client setup complete, waiting for connection...");
