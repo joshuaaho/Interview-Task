@@ -1,4 +1,4 @@
-import { WordScore } from "../..";
+import { WordScore } from "../index";
 
 function isCorrectGuess(wordScore: WordScore): boolean {
     return wordScore.every((score) => score === "H");

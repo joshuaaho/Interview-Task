@@ -1,4 +1,4 @@
-import { WordList } from "../../constants";
+import { WordList } from "../constants";
 
 export function pickRandomWord(): string {
     const values = Object.keys(WordList).filter(key => isNaN(Number(key)));

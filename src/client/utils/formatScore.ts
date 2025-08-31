@@ -1,4 +1,4 @@
-import { WordScore } from "../index";
+import { WordScore } from "../../server/index";
 import { Colors } from "../constants";
 
 export function formatScore(guess: string, score: WordScore): string {
