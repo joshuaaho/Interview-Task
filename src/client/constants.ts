@@ -13,4 +13,6 @@ export enum Colors  {
     GUESS_MADE,
   }
    
+
+  export const SERVER_URL = "http://localhost:3000";
   
