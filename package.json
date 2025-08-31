@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "server": "npx tsx src/server/index.ts",
+    "client": "npx tsx src/client/index.ts"
   },
   "author": "",
   "license": "ISC",
