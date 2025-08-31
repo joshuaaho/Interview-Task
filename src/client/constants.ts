@@ -7,5 +7,10 @@ export enum Colors  {
     GREEN = '\x1b[32m',
   }
   
+
+  export enum ClientCommands {
+    REQUEST_START_GAME ,
+    GUESS_MADE,
+  }
    
   
